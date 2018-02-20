@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :space
-  has_one :review
+  has_one :review, dependent: :destroy
 
   validates :arrival, :departure, :user_id, :space_id, presence: true
   validate :validate_schedule

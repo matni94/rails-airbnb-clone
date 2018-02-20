@@ -1,0 +1,6 @@
+<%= simple_form_for(space) do |f| %>
+  <%=  f.input :name %>
+  <%=  f.input :address %>
+  <%=  f.input :price, label: "Price/hour" %>
+  <%=  f.submit value: "Submit a new space" %>
+<% end %>

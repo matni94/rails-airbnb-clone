@@ -1,0 +1,12 @@
+
+<p><%= @space.name %></p>
+<p><%= @space.address %></p>
+<p><%= @space.price %></p>
+
+<%= link_to "edit", edit_space_path %>
+<%= link_to "delete", space_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to space_path do %>
+  <i class="fa fa-history"></i> Back to list
+<% end %>
+
+
