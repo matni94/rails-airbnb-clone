@@ -4,6 +4,5 @@ class Space < ApplicationRecord
   has_many :reviews, through: :bookings
 
   validates :address, :name, :user_id, :price, presence: true
-  validates :name, uniqueness: true
 
 end

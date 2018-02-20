@@ -1,3 +1,4 @@
+<%= link_to "Create a new space", new_space_path %>
 
 <ul>
 <% @spaces.each do |space| %>
@@ -6,5 +7,3 @@
   <li><%= space.price %></li>
 <% end %>
 </ul>
-
-<%= link_to "Create a new space", new_space_path %>

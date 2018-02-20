@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'awesome_print'
+require "nokogiri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -5,45 +9,45 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-i = 0
-
 puts 'Cleaning database...'
-User.destroy_all
 Space.destroy_all
-
+User.destroy_all
 puts 'Creating spaces...'
 
+user = User.create(
+  email: 'matthieu@gmail.com',
+  password: 'password',
+  first_name: 'Matthieu',
+  last_name: 'Nicolas',
+  phone_number: '0612000000'
+)
 
-users_attributes = []
-10.times do
+i = 1
+limit = 67
 
-  user = {
-  last_name:         Faker::Name.last_name,
-  first_name:        Faker::Name.first_name,
-  phone_number:      Faker::PhoneNumber.phone_number,
-  email:             Faker::Internet.email,
-  password:          Faker::Crypto.md5
-  }
-  users_attributes << user
-end
+data_array = []
 
-User.create!(users_attributes)
+while i < limit
+  url = "http://bureauflexible.fr/?Office_page=#{i}"
+  data = open(url).read
+  seed = Nokogiri::HTML(data)
 
+  seed.search('.bf-each-office').each do |element|
+    name = element.search('.bf-each-office-detailszone a').text.strip
+    address = element.search('.bf-each-office-city').text.strip
+    price = element.search('.bf-each-office-price').text.strip.delete("€ /mois").to_i
+    image_url = element.search('.bf-each-office-image').attr('src').value
 
-spaces_attributes = []
-10.times do
+    Space.create!(
+      name: name,
+      address: address,
+      price: price,
+      image_url: "http://bureauflexible.fr#{image_url}",
+      user: user
+    )
+  end
 
-  space = {
-    name:         Faker::BossaNova.artist,
-    address:      Faker::Address.street_address,
-    user_id:      User.find(users_attributes[i])
-
-  }
   i += 1
-  spaces_attributes << space
 end
-Space.create!(spaces_attributes)
-puts 'Finished!'
 
-
+puts "Finished"
