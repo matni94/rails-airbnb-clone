@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
-
   before_action :set_space, only: [:update, :show, :destroy, :edit]
+
   def index
     @spaces = Space.all
   end
@@ -11,8 +11,9 @@ class SpacesController < ApplicationController
 
   def create
     @space = Space.new(params_space)
+    @space.user = current_user
     if @space.save
-      redirect_to :spaces
+      redirect_to spaces_path
     else
       render "new"
     end

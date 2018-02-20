@@ -1,5 +1,3 @@
-<h1>Space#index</h1>
-<p>Find me in app/views/space/index.html.erb</p>
 
 <ul>
 <% @spaces.each do |space| %>
@@ -8,3 +6,5 @@
   <li><%= space.price %></li>
 <% end %>
 </ul>
+
+<%= link_to "Create a new space", new_space_path %>
