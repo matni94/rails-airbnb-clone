@@ -9,8 +9,10 @@ require "nokogiri"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning database...'
 Space.destroy_all
 User.destroy_all
+puts 'Creating spaces...'
 
 user = User.create(
   email: 'matthieu@gmail.com',
@@ -48,3 +50,4 @@ while i < limit
   i += 1
 end
 
+puts "Finished"
