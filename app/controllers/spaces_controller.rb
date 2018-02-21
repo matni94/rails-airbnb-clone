@@ -15,7 +15,7 @@ class SpacesController < ApplicationController
     if @space.save
       redirect_to spaces_path
     else
-      render "new"
+      render :new
     end
   end
 

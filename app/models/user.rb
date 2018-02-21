@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :spaces
+  has_many :owner_bookings, through: :spaces
   has_many :bookings
   has_many :reviews, through: :bookings
 
