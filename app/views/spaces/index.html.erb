@@ -1,9 +1,24 @@
-<%= link_to "Create a new space", new_space_path %>
+<%= render "pages/banner" %>
 
-<ul>
-<% @spaces.each do |space| %>
-  <li><%= link_to space.name, space_path(space) %></li>
-  <li><%= space.address %></li>
-  <li><%= space.price %></li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <% @spaces.each do |space| %>
+    <div class="col-xs-12 col-sm-4">
+      <!-- insert <div class="card"> -->
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url(<%= space.image_url%>);">
+            <div class="card-name">
+              <h2><%= space.name %></h2>
+            </div>
+            <div class="card-address">
+              <p><%= space.address %></p>
+            </div>
+            <div class="card-price">
+              <p><%= space.price %>€/mois</p>
+            </div>
+            <%= link_to "", space_path(space), class: "card-link" %>
+            </div>
+          </div>
+      <% end %>
+        </div>
+      </div>
