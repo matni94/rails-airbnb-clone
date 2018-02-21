@@ -1,0 +1,18 @@
+<h1>Users#Dashboard</h1>
+
+<h2> My Booking for Other spaces </h2>
+<%= @bookings_visitor.each do |booking| %>
+<p><%= booking.arrival %></p>
+<p><%= booking.departure %></p>
+<p> Accepted ?</p>
+
+<% end %>
+
+
+<h2> My Booking for My spaces From Other Users </h2>
+<%= @bookings_owner.each do |booking| %>
+<p><%= booking.arrival %></p>
+<p><%= booking.departure %></p>
+<p> Accepted ?</p>
+
+<% end %>
