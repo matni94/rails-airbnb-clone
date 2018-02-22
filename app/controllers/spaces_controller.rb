@@ -4,6 +4,13 @@ class SpacesController < ApplicationController
   def index
     if params[:search].present?
       @spaces = Space.perform_search(params[:search])
+      @markers = @spaces.map do |space|
+        {
+          lat: space.latitude,
+          lng: space.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
     else
       @spaces = Space.all
     end
