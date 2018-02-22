@@ -2,7 +2,11 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:update, :show, :destroy, :edit]
 
   def index
-    @spaces = Space.all
+    if params[:search].present?
+      @spaces = Space.perform_search(params[:search])
+    else
+      @spaces = Space.all
+    end
   end
 
   def new
@@ -35,6 +39,7 @@ class SpacesController < ApplicationController
     @space.destroy
     redirect_to spaces_path
   end
+
 
   private
 

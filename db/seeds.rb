@@ -22,8 +22,21 @@ user = User.create(
   phone_number: '0612000000'
 )
 
+def scrap_address(url)
+  begin
+    data = open(url).read
+    seed_show = Nokogiri::HTML(data)
+    address = seed_show.search('.bf-office-address').text.strip
+    description = seed_show.search('.bf-office-deskDescription p').text.strip
+    { address: address, description: description }
+  rescue OpenURI::HTTPError
+    puts "error for #{url}"
+    { address: "Chemin de la paix", description: "Lorem ipsum" }
+  end
+end
+
 i = 1
-limit = 67
+limit = 3
 
 data_array = []
 
@@ -33,17 +46,20 @@ while i < limit
   seed = Nokogiri::HTML(data)
 
   seed.search('.bf-each-office').each do |element|
+    sleep(1)
     name = element.search('.bf-each-office-detailszone a').text.strip
-    address = element.search('.bf-each-office-city').text.strip
+    # address = element.search('.bf-each-office-city').text.strip
     price = element.search('.bf-each-office-price').text.strip.delete("€ /mois").to_i
     image_url = element.search('.bf-each-office-image').attr('src').value
-
+    url_show = element.search('.bf-each-office-topimagezone').attr('href').value
+    extra_info = scrap_address("http://bureauflexible.fr#{url_show}")
     Space.create!(
       name: name,
-      address: address,
+      address: extra_info[:address],
       price: price,
       image_url: "http://bureauflexible.fr#{image_url}",
-      user: user
+      user: user,
+      description: extra_info[:description]
     )
   end
 
@@ -51,3 +67,4 @@ while i < limit
 end
 
 puts "Finished"
+

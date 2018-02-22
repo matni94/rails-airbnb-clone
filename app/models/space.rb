@@ -6,4 +6,17 @@
 
   validates :address, :name, :user_id, :price, presence: true
 
+  include PgSearch
+  pg_search_scope :search_by_city,
+    against: [ :address, :name ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
+ def self.perform_search(keyword)
+    if keyword.present?
+    then Space.search_by_city(keyword)
+    else Space.all
+    end.sort
+  end
 end
