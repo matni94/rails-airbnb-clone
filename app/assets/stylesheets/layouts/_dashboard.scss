@@ -4,13 +4,24 @@ body {
 
 h1 {
   font-size: 40px;
-  font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid #DDDDDD;
   text-align: center;
   padding: 15px;
-  color: grey;
+  color: gray;
+  margin: 0px;
 }
+
+.container1 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.list {
+  list-style:none;
+}
+
 
 
 
