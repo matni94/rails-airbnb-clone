@@ -10,6 +10,7 @@ resources :bookings, only: [] do
 end
 
 get "/dashboard", to: 'users#dashboard'
+get "/dashboard/profile", to: 'users#profile'
 
 
 root to: 'pages#home'
