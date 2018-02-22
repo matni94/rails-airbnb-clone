@@ -20,6 +20,8 @@ gem 'nokogiri'
 gem 'awesome_print'
 gem 'pg_search'
 gem 'bootstrap-datepicker-rails'
+gem "geocoder"
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
