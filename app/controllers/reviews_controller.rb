@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def new
-    @space = Space.find(params[:space_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new
   end
 
