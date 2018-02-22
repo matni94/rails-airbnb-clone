@@ -22,6 +22,23 @@ user = User.create(
   phone_number: '0612000000'
 )
 
+users_attributes = [
+  {
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(8),
+    first_name: 'Matthieu',
+    last_name: 'Nicolas',
+    phone_number: '0612000000'
+  },
+  {
+    name:         'Pizza East',
+    address:      '56A Shoreditch High St, London E1 6PQ',
+    description:  'Pizzeria with industrial looks, serving rustic pizza and antipasti.',
+    stars:        4
+  }
+]
+Restaurant.create!(restaurants_attributes)
+
 def scrap_address(url)
   begin
     data = open(url).read

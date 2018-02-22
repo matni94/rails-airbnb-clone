@@ -1,4 +1,4 @@
-  class Space < ApplicationRecord
+class Space < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many :owner_bookings, class_name: 'Booking'
@@ -14,7 +14,7 @@
     }
 
 
- def self.perform_search(keyword)
+  def self.perform_search(keyword)
     if keyword.present?
     then Space.search_by_city(keyword)
     else Space.all

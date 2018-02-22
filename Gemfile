@@ -21,6 +21,7 @@ gem 'awesome_print'
 gem 'pg_search'
 gem 'bootstrap-datepicker-rails'
 gem "geocoder"
+gem 'carrierwave', '~> 1.2'
 
 
 group :development do
