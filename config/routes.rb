@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 devise_for :users
 resources :users, only: [:show]
-resources :spaces, only: [:new, :create, :show, :index, :edit] do
+resources :spaces, only: [:index, :new, :create, :show,  :edit] do
   resources :bookings, only: [:create]
 end
 
@@ -12,6 +12,6 @@ end
 get "/dashboard", to: 'users#dashboard'
 
 
-  root to: 'spaces#index'
+root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
