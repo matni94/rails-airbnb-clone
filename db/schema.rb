@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 20180222134848) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "space_id"
-    t.string "arrival"
-    t.string "departure"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "accepted"
+    t.datetime "arrival"
+    t.datetime "departure"
     t.index ["space_id"], name: "index_bookings_on_space_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

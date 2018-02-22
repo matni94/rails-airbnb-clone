@@ -1,18 +1,36 @@
-<h1>Users#Dashboard</h1>
+<h1 id="profile">Mon profil</h1>
 
+<div>
+  <ul>
+    <li>Mon profil</li>
+    <li>Mes bureaux</li>
+    <li>Mes espaces </li>
+  </ul>
+</div>
+
+<div>
+   <ul>
+    <li><%= @user.last_name %></li>
+    <li><%= @user.first_name %></li>
+    <li><%= @user.email %></li>
+  </ul>
+</div>
+
+<div class="container">
 <h2> My Booking for Other spaces </h2>
 <%= @bookings_visitor.each do |booking| %>
 <p><%= booking.arrival %></p>
 <p><%= booking.departure %></p>
 <p> Accepted ?</p>
-
 <% end %>
+</div>
 
-
+<div class="container">
 <h2> My Booking for My spaces From Other Users </h2>
 <%= @bookings_owner.each do |booking| %>
 <p><%= booking.arrival %></p>
 <p><%= booking.departure %></p>
 <p> Accepted ?</p>
-
 <% end %>
+<%= link_to "Ajouter un bureau", new_space_path%>
+</div>
