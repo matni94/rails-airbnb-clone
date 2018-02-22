@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    # @user = current_user
+    @user = current_user
     # @user.bookings = Booking.where(user_id: current_user)
     # @user.spaces = Space.where(user_id: current_user)
     # @user.spaces.each do |space|
