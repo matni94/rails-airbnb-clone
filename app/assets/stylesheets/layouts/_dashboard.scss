@@ -2,26 +2,29 @@ body {
   background-color: white;
 }
 
-h1 {
+#profile {
   font-size: 40px;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid #DDDDDD;
   text-align: center;
   padding: 15px;
-  color: gray;
+  color: #FF717E;
   margin: 0px;
 }
 
-.container1 {
-  display: flex;
-  align-items: center;
-  justify-content: left;
+.container h2 {
+  color: #999999;
+  font-size: 35px;
 }
 
-.list {
-  list-style:none;
+.container ul {
+  list-style: none;
 }
 
+
+.container li {
+  font-size: 20px;
+}
 
 
 
