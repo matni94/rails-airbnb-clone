@@ -1,6 +1,9 @@
-<%= simple_form_for(space) do |f| %>
-  <%=  f.input :name %>
-  <%=  f.input :address %>
-  <%=  f.input :price, label: "Price/hour" %>
-  <%=  f.submit value: "Submit a new space" %>
-<% end %>
+<div class="new_space" style="width: 50%; margin: 0 auto; text-align: center">
+  <%= simple_form_for(space) do |f| %>
+    <%=  f.input :name %>
+    <%=  f.input :address %>
+    <%=  f.input :price, label: "Price/hour" %>
+
+    <%=  f.submit value: "Submit a new space" %>
+  <% end %>
+</div>
