@@ -28,6 +28,7 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @booking = @space.bookings.new
   end
 
   def destroy

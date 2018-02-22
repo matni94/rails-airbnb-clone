@@ -1,14 +1,38 @@
-<img src="http://bureauflexible.fr#{image_url}" alt="">
-<p><%= @space.name %></p>
-<p><%= @space.address %></p>
-<p><%= @space.price %></p>
+*<div class="space" style="align-content: center, width: 50%; margin: 0 auto; text-align: left>
+  <div class="image" style="align-content: center">
+    <div style="width: 50%; margin: 0 auto; text-align: left"><img src=<%= @space.image_url %> alt="">
+    </div>
 
-<%= link_to "edit", edit_space_path %>
-<%= link_to "delete", space_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to space_path do %>
-<%= link_to "see all spaces", spaces_path %>
-<% end %>
+  </div>
+
+  <div class="info_space" style="width: 50%; margin: 0 auto; text-align: left">
+    <h1><%= @space.name %></h1>
+    <h3><%= @space.address %></h3>
+    <p><%= @space.price %> €/mois</p>
+
+    <br>
+    <br>
+    <%= link_to space_path do %>
+    <%= link_to "see all spaces", spaces_path %>
+    <% end %>
 
 
 
+  </div>
 
+
+  <div class="booking" style="width: 50%; margin: 0 auto; text-align: center">
+        <%= simple_form_for [@space, @booking] do |f| %>
+          <%= f.input :arrival, as: :string, input_html: { class: 'datepicker' } %>
+          <%= f.input :departure, as: :string, input_html: { class: 'datepicker' } %>
+
+          <%= f.submit %>
+        <% end %>
+  </div>
+
+
+  <div class="reviews">
+
+  </div>
+
+</div>
