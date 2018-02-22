@@ -1,7 +1,3 @@
-body {
-  background-color: white;
-}
-
 #profile {
   font-size: 40px;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
@@ -12,22 +8,37 @@ body {
   margin: 0px;
 }
 
-.container h2 {
+.container1 h2 {
   color: #999999;
   font-size: 35px;
 }
 
-.container ul {
+.container1 ul {
   list-style: none;
 }
 
 
-.container li {
+.container1 li {
   font-size: 20px;
+
 }
 
+.img-small {
+  border-radius: 5px;
+  width: 400px;
+  height: 200px;
+}
 
+.resa_description {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
 
+.message-body {
+  height: 200px;
+  overflow-y: scroll;
+}
 
 
 
