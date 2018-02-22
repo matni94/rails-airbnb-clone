@@ -1,16 +1,8 @@
-<div class="booking">
-  <%= form_for(@booking) do |f| %>
-  <%= f.label :arrival %>
-  <%= f.text_field :arrival %>
-
-  <%= f.label :departure %>
-  <%= f.text_field :departure %>
-
-  <%= f.submit %>
-<% end %>
-
-
-
-
-
-</div>
+  <div class="booking" style="width: 50%; margin: 0 auto; text-align: center">
+        <%= simple_form_for [@space, @booking] do |f| %>
+          <%= f.input :arrival, input_html: { class: 'datepicker' } %>
+          <%= f.input :departure, input_html: { class: 'datepicker' } %>
+          <%= f.input :guest_number, collection: (0..10).to_a %>
+          <%= f.submit %>
+        <% end %>
+  </div>

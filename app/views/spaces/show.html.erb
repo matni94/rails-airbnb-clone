@@ -9,6 +9,7 @@
     <h1><%= @space.name %></h1>
     <h3><%= @space.address %></h3>
     <p><%= @space.price %> €/mois</p>
+    <p><%= @space.description %></p>
 
     <br>
     <br>
@@ -21,14 +22,8 @@
   </div>
 
 
-  <div class="booking" style="width: 50%; margin: 0 auto; text-align: center">
-        <%= simple_form_for [@space, @booking] do |f| %>
-          <%= f.input :arrival, as: :string, input_html: { class: 'datepicker' } %>
-          <%= f.input :departure, as: :string, input_html: { class: 'datepicker' } %>
+  <%= render 'formbooking' %>
 
-          <%= f.submit %>
-        <% end %>
-  </div>
 
 
   <div class="reviews">

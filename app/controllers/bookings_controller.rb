@@ -1,13 +1,15 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:new, :create, :show, :destroy, :edit]
+  before_action :set_booking, only: [:new, :show, :destroy, :edit]
+  before_action :set_space, only: [:create]
   def new
   end
 
   def create
     @booking = Booking.new(params_booking)
     @booking.user = current_user
+    @booking.space = @space
     if @booking.save
-      redirect_to bookings_path
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -33,10 +35,14 @@ class BookingsController < ApplicationController
   private
 
   def params_booking
-    params.require(:booking).permit(:arrival, :departure)
+    params.require(:booking).permit(:arrival, :departure, :guest_number)
   end
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def set_space
+    @space = Space.find(params[:space_id])
   end
 end
