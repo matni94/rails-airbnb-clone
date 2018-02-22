@@ -1,20 +1,22 @@
 <h1 id="profile">Mon profil</h1>
 
-<div>
-  <ul>
-    <li>Mon profil</li>
-    <li>Mes bureaux</li>
-    <li>Mes espaces </li>
-  </ul>
+<div class="container1">
+  <div class="list">
+    <ul>
+      <li>Mon profil</li>
+      <li>Mes bureaux</li>
+      <li>Mes espaces </li>
+    </ul>
+  </div>
+  <div class="list">
+     <ul>
+      <li><%= @user.last_name %></li>
+      <li><%= @user.first_name %></li>
+      <li><%= @user.email %></li>
+    </ul>
+  </div>
 </div>
 
-<div>
-   <ul>
-    <li><%= @user.last_name %></li>
-    <li><%= @user.first_name %></li>
-    <li><%= @user.email %></li>
-  </ul>
-</div>
 
 <div class="container">
 <h2> My Booking for Other spaces </h2>
