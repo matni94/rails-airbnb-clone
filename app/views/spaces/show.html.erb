@@ -27,7 +27,10 @@
 
 
   <div class="reviews">
+    <% @space.reviews.each do |review| %>
+      <div><p><%= review.content %>     <%= review.rating %></p></div>
 
+    <% end %>
   </div>
 
 </div>
