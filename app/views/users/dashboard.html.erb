@@ -40,11 +40,11 @@
           <th>User</th>
           <th>Status Of the Request</th>
       </tr>
-      <%= @bookings_owner.each do |booking| %>
+      <% @bookings_owner.each do |booking| %>
         <tr>
           <td><%= booking.arrival%></td>
           <td><%= booking.departure%></td>
-          <td><%= booking.user%></td>
+          <td><%= booking.user.last_name %></td>
           <td><button type="button" class="btn btn-success">Accept</button>
               <button type="button" class="btn btn-danger">Refuse</button></td>
         </tr>
