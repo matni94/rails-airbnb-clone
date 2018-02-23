@@ -22,6 +22,8 @@ gem 'pg_search'
 gem 'bootstrap-datepicker-rails'
 gem "geocoder"
 gem 'carrierwave', '~> 1.2'
+gem "faker"
+gem "csv"
 
 
 group :development do
