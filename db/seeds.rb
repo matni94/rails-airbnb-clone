@@ -12,6 +12,7 @@ require "csv"
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Cleaning database...'
+Review.destroy_all
 Space.destroy_all
 User.destroy_all
 puts 'Creating spaces...'
@@ -73,41 +74,34 @@ while i < limit
   i += 1
 end
 
-users_attributes = [
-  3.times do
-    {
-    email: Faker::Internet.email,
-    password: Faker::Internet.password(8),
-    first_name: Faker::Name.first_name ,
-    last_name: Faker::Name.last_name ,
-    phone_number: Faker::PhoneNumber.phone_number
-  }
-end
-]
-User.create!(users_attributes)
+isa = User.create!(
+      email: "iza@gmail.com",
+      password: "azerty",
+      first_name: "isabelle",
+      last_name: "Pontoizeau",
+      phone_number: "0612345678"
+)
 
+lahb = User.create!(
+      email: "lahb@gmail.com",
+      password: "azerty",
+      first_name: "lahbib",
+      last_name: "belhaddad",
+      phone_number: "0612345679"
+)
 
-booking_attributes = [
-  10.times do
-    {
-    :arrival Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
-    :departure Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
-    :user_id,
-    :space_id,
-  }
-end
-]
+Space.create!(
+      name: "Joli studio avec vu sur Fourvière",
+      address: "36 rue de Fourvière, LYON",
+      price: "50€/h",
+      image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lyon_basilique_de_fourvi%C3%A8re.jpg/1200px-Lyon_basilique_de_fourvi%C3%A8re.jpg",
+      user: lahb,
+      description: "Très calme pour travailler sur votre appli"
+    )
 
-10.times do
-  Booking.create(
-    :arrival Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
-    :departure Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
-    :user_id,
-    :space_id,
-  )
-end
-
-Booking.create!(bookings_attributes)
+lahb.spaces.first.bookings.create!(arrival: "2018-02-22 14:00:00 UTC", departure: "2018-02-22 15:00:00 UTC", guest_number: 1, user: isa)
+lahb.spaces.first.bookings.create!(arrival: "2018-02-23 10:00:00 UTC", departure: "2018-02-23 14:00:00 UTC", guest_number: 1, user: isa)
+lahb.spaces.first.bookings.create!(arrival: "2018-02-25 20:00:00 UTC", departure: "2018-02-25 00:00:00 UTC", guest_number: 1, user: isa)
 
 
 puts "Finished"
