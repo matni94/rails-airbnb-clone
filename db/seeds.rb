@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'awesome_print'
 require "nokogiri"
+require "faker"
+require "csv"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
@@ -13,14 +15,6 @@ puts 'Cleaning database...'
 Space.destroy_all
 User.destroy_all
 puts 'Creating spaces...'
-
-user = User.create(
-  email: 'matthieu@gmail.com',
-  password: 'password',
-  first_name: 'Matthieu',
-  last_name: 'Nicolas',
-  phone_number: '0612000000'
-)
 
 def scrap_address(url)
   begin
@@ -47,6 +41,13 @@ while i < limit
 
   seed.search('.bf-each-office').each do |element|
     sleep(1)
+    user = User.create(
+      email: Faker::Internet.email,
+      password: Faker::Internet.password,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      phone_number: Faker::Number.number
+    )
     name = element.search('.bf-each-office-detailszone a').text.strip
     # address = element.search('.bf-each-office-city').text.strip
     price = element.search('.bf-each-office-price').text.strip.delete("€ /mois").to_i
@@ -61,10 +62,53 @@ while i < limit
       user: user,
       description: extra_info[:description]
     )
+
+    @space = Space.last
+
+    CSV.open("index_cards.csv", "a") do |row|
+      row << [@space.name, @space.address, @space.price, @space.image_url]
+    end
   end
 
   i += 1
 end
+
+users_attributes = [
+  3.times do
+    {
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(8),
+    first_name: Faker::Name.first_name ,
+    last_name: Faker::Name.last_name ,
+    phone_number: Faker::PhoneNumber.phone_number
+  }
+end
+]
+User.create!(users_attributes)
+
+
+booking_attributes = [
+  10.times do
+    {
+    :arrival Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :departure Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :user_id,
+    :space_id,
+  }
+end
+]
+
+10.times do
+  Booking.create(
+    :arrival Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :departure Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :user_id,
+    :space_id,
+  )
+end
+
+Booking.create!(bookings_attributes)
+
 
 puts "Finished"
 

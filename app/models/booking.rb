@@ -4,6 +4,7 @@ class Booking < ApplicationRecord
   has_one :review, dependent: :destroy
 
   validates :arrival, :departure, :user_id, :space_id, presence: true
+  validates :accepted, inclusion: { in: ["pending", "accepted", "refused"]}
   validate :validate_schedule
 
   private

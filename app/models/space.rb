@@ -1,4 +1,4 @@
-  class Space < ApplicationRecord
+class Space < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many :owner_bookings, class_name: 'Booking'
@@ -15,4 +15,12 @@
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
+
+  def self.perform_search(keyword)
+    if keyword.present?
+    then Space.search_by_city(keyword)
+    else Space.all
+    end.sort
+  end
 end

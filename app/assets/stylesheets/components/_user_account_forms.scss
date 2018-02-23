@@ -1,0 +1,40 @@
+.pagetext {
+  text-align: center;
+}
+
+.userform {
+  margin: 0 auto;
+  width: 50%;
+  input:-webkit-autofill {
+    background-color: white !important;
+    border: 0;
+  }
+}
+
+.pagetext {
+  color: #A4A7AB;
+}
+
+.userbutton {
+  background: #4569F7;
+  border-radius: 5px;
+  border: 1px solid #4569F7;
+  color: white;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  &:hover {
+    background: rgba(255,255,255, 0.3);
+    color: #3450CA;
+    border: 1px solid #3450CA;;
+  }
+}
+
+a {
+  margin: 10px;
+  text-decoration: underline;
+  color: #4569F7;
+  &:hover {
+    color: #3450CA;
+  }
+}
+

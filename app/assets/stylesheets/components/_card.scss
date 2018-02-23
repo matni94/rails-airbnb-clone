@@ -37,8 +37,6 @@
 
 }
 
-
-
 .card-link {
   position: absolute;
   top: 0;
@@ -52,4 +50,16 @@
 }
 .card-link:hover {
   opacity: 0.1;
+}
+
+.controls {
+  margin: 0 auto;
+  width: 98%;
+  display: flex;
+  .separator {
+    flex-grow: 1;
+  }
+  svg {
+    font-size: 3em;
+  }
 }

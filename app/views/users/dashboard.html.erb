@@ -1,26 +1,57 @@
-<h1 id="profile">Mon profil</h1>
+<h1 id="profile">My profil</h1>
 
-<div class="container">
-    <h2>My profil</h2>
-    <ul>
-      <li><%= @user.first_name %></li>
-      <li><%= @user.last_name %></li>
-      <li><%= @user.email %></li>
-    </ul>
+<div class="container1">
+  <h2>My profil</h2>
+  <ul>
+    <li> - First name: <%= @user.first_name %></li>
+    <li> - Last name:  <%= @user.last_name %></li>
+    <li> - Email:  <%= @user.email %></li>
+  </ul>
+  <h2> My reservations </h2>
+  <div class="resa_description">
+    <table style="width:100%">
+      <tr>
+          <th>Arrival</th>
+          <th>Departure</th>
+          <th>Picture</th>
+          <th>Description</th>
+          <th>Status Of the Request</th>
+      </tr>
+      <% @bookings_visitor.each do |booking| %>
+        <tr>
+          <td><%= booking.arrival%></td>
+          <td><%= booking.departure%></td>
+          <td><img class="avatar-large" src=<%= booking.space.image_url %>></td>
+          <td><%= booking.space.description%></td>
+          <td class="btn btn-warning"><%= booking.accepted %></td>
+        </tr>
+      <% end %>
 
-    <h2> My reservations </h2>
-    <%= @bookings_visitor.each do |booking| %>
-    <p><%= booking.arrival %></p>
-    <p><%= booking.departure %></p>
-    <p> Accepted ?</p>
-    <% end %>
-
-    <h2>My Bookings</h2>
-    <%= @bookings_owner.each do |booking| %>
-    <p><%= booking.arrival %></p>
-    <p><%= booking.departure %></p>
-    <p> Accepted ?</p>
-    <% end %>
-    <%= link_to "Ajouter un bureau", new_space_path%>
+    </table>
   </div>
+
+  <h2>My Bookings</h2>
+  <%= link_to "Ajouter un bureau", new_space_path%>
+  <div class="resa_description">
+    <table style="width:100%">
+      <tr>
+          <th>Arrival</th>
+          <th>Departure</th>
+          <th>User</th>
+          <th>Status Of the Request</th>
+      </tr>
+      <%= @bookings_owner.each do |booking| %>
+        <tr>
+          <td><%= booking.arrival%></td>
+          <td><%= booking.departure%></td>
+          <td><%= booking.user%></td>
+          <td><button type="button" class="btn btn-success">Accept</button>
+              <button type="button" class="btn btn-danger">Refuse</button></td>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+
+
 </div>
