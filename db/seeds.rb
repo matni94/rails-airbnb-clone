@@ -22,22 +22,7 @@ user = User.create(
   phone_number: '0612000000'
 )
 
-users_attributes = [
-  {
-    email: Faker::Internet.email,
-    password: Faker::Internet.password(8),
-    first_name: 'Matthieu',
-    last_name: 'Nicolas',
-    phone_number: '0612000000'
-  },
-  {
-    name:         'Pizza East',
-    address:      '56A Shoreditch High St, London E1 6PQ',
-    description:  'Pizzeria with industrial looks, serving rustic pizza and antipasti.',
-    stars:        4
-  }
-]
-Restaurant.create!(restaurants_attributes)
+
 
 def scrap_address(url)
   begin
@@ -82,6 +67,43 @@ while i < limit
 
   i += 1
 end
+
+users_attributes = [
+  3.times do
+    {
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(8),
+    first_name: Faker::Name.first_name ,
+    last_name: Faker::Name.last_name ,
+    phone_number: Faker::PhoneNumber.phone_number
+  }
+end
+]
+User.create!(users_attributes)
+
+
+booking_attributes = [
+  10.times do
+    {
+    :arrival Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :departure Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :user_id,
+    :space_id,
+  }
+end
+]
+
+10.times do
+  Booking.create(
+    :arrival Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :departure Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+    :user_id,
+    :space_id,
+  )
+end
+
+Booking.create!(bookings_attributes)
+
 
 puts "Finished"
 
