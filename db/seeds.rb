@@ -31,12 +31,12 @@ def scrap_address(url)
     { address: address, description: description }
   rescue OpenURI::HTTPError
     puts "error for #{url}"
-    { address: "Chemin de la paix", description: "Lorem ipsum" }
+    { address: "Tour eiffel", description: "Lorem ipsum" }
   end
 end
 
 i = 1
-limit = 3
+limit = 10
 
 data_array = []
 
