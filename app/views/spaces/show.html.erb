@@ -9,7 +9,7 @@
           <h1><%= @space.name %></h1>
           <h3><%= @space.address %></h3>
           <p class ='price'><%= @space.price %> €/mois</p>
-          <p><%= @space.description %></p>
+          <p class = "description"><%= @space.description %></p>
           <br>
           <br>
           <%= link_to space_path do %>
@@ -30,10 +30,7 @@
 
 
   <div class="reviews">
-    <% @space.reviews.each do |review| %>
-      <div><p><%= review.content %>     <%= review.rating %></p></div>
 
-    <% end %>
   </div>
 
 </div>
