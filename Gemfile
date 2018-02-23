@@ -24,6 +24,8 @@ gem "geocoder"
 gem 'carrierwave', '~> 1.2'
 gem "faker"
 gem "csv"
+gem 'cloudinary'
+
 
 
 group :development do
