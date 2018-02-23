@@ -1,8 +1,11 @@
 import GMaps from 'gmaps/gmaps.js';
 
+
 const mapElement = document.getElementById('map');
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
+  console.log("je sui sla ==========");
+  console.log(mapElement.dataset.markers);
   const markers = JSON.parse(mapElement.dataset.markers);
   map.addMarkers(markers);
   if (markers.length === 0) {
@@ -10,6 +13,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   } else if (markers.length === 1) {
     map.setCenter(markers[0].lat, markers[0].lng);
     map.setZoom(14);
+    console.log("here");
   } else {
     map.fitLatLngBounds(markers);
   }

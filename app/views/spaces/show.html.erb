@@ -1,28 +1,31 @@
-<div class="space" style="align-content: center, width: 50%; margin: 0 auto; text-align: left">
-  <div class="image" style="align-content: center">
-    <div style="width: 50%; margin: 0 auto; text-align: left"><img src=<%= @space.image_url %> alt="">
-    </div>
+  <div class="image-show col-sm-12" style="background-image: url('<%= @space.image_url %>')">
   </div>
 
 
-  <div class="info_space" style="width: 50%; margin: 0 auto; text-align: left">
-    <h1><%= @space.name %></h1>
-    <h3><%= @space.address %></h3>
-    <p><%= @space.price %> €/mois</p>
-    <p><%= @space.description %></p>
 
-    <br>
-    <br>
-    <%= link_to space_path do %>
-    <%= link_to "see all spaces", spaces_path %>
-    <% end %>
+<div class="container">
+  <div class="main-container">
+        <div class="info_space">
+          <h1><%= @space.name %></h1>
+          <h3><%= @space.address %></h3>
+          <p class ='price'><%= @space.price %> €/mois</p>
+          <p><%= @space.description %></p>
+          <br>
+          <br>
+          <%= link_to space_path do %>
+          <%= link_to "see all spaces", spaces_path %>
+          <% end %>
+        </div>
+        <div class="form">
+        <%= render 'formbooking' %>
+        </div>
+      </div>
+      <div id="map"
+      data-markers="<%= @markers.to_json %>"
+      ></div>
+</div>
 
 
-
-  </div>
-
-
-  <%= render 'formbooking' %>
 
 
 

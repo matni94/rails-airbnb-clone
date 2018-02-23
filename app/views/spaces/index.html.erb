@@ -1,9 +1,10 @@
 
+<div class="main-container">
+  <div class="card-container"></div>
 
-<div class="container">
   <div class="row">
     <% @spaces.each do |space| %>
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-6">
       <!-- insert <div class="card"> -->
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
         url(<%= space.image_url%>);">
@@ -20,10 +21,9 @@
             </div>
           </div>
       <% end %>
-      <div id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-      ></div>
-        </div>
       </div>
+      <div id="map"
+      data-markers="<%= @markers.to_json %>"
+      ></div>
+    </div>
+  </div>

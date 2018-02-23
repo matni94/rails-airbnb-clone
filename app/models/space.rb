@@ -4,6 +4,9 @@ class Space < ApplicationRecord
   has_many :owner_bookings, class_name: 'Booking'
   has_many :reviews, through: :bookings
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   validates :address, :name, :user_id, :price, presence: true
 
   include PgSearch
