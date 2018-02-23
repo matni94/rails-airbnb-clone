@@ -90,6 +90,14 @@ lahb = User.create!(
       phone_number: "0612345679"
 )
 
+moh = User.create!(
+      email: "moh@gmail.com",
+      password: "azerty",
+      first_name: "mohamed",
+      last_name: "Diop",
+      phone_number: "0612345680"
+)
+
 Space.create!(
       name: "Joli studio avec vu sur Fourvière",
       address: "36 rue de Fourvière, LYON",
@@ -99,9 +107,9 @@ Space.create!(
       description: "Très calme pour travailler sur votre appli"
     )
 
-lahb.spaces.first.bookings.create!(arrival: "2018-02-22 14:00:00 UTC", departure: "2018-02-22 15:00:00 UTC", guest_number: 1, user: isa)
-lahb.spaces.first.bookings.create!(arrival: "2018-02-23 10:00:00 UTC", departure: "2018-02-23 14:00:00 UTC", guest_number: 1, user: isa)
-lahb.spaces.first.bookings.create!(arrival: "2018-02-25 20:00:00 UTC", departure: "2018-02-25 00:00:00 UTC", guest_number: 1, user: isa)
+lahb.spaces.first.bookings.create!(arrival: "2018-02-22 14:00:00 UTC", departure: "2018-02-22 15:00:00 UTC", guest_number: 1, user: moh)
+lahb.spaces.first.bookings.create!(arrival: "2018-02-23 10:00:00 UTC", departure: "2018-02-23 14:00:00 UTC", guest_number: 1, user: moh)
+lahb.spaces.first.bookings.create!(arrival: "2018-02-25 20:00:00 UTC", departure: "2018-02-25 00:00:00 UTC", guest_number: 1, user: moh)
 
 
 puts "Finished"
